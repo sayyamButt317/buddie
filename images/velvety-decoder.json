@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "velvety-decoder-378413",
+  "private_key_id": "a7c5cb5152209888bbbf2d6ec4cfa38dbbae62b6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDSlhLld4lmWlSz\nGUvdwpcafpJiTVDdjnP65Em67vfd3672UYlGe8B4wKySBK2BoZ2uYWrcAXRJQIQP\nwRv1SoreQz9yK4rgtWu5ksGkOON0s2WJMnAp5cxEGEzIb5UBHrf+QUlUfFfHIOZQ\ngOrx80spNIr79eWXWEQjemu72Y96i4njukDFjmugEPinRP2vqcYfa5KbqPuRAH1K\nswpWGQyXM3wri7jL3MfneC+8HXXkj8oo4TYPkifniByMWU1jIVVVuRADA+E1eFPC\nPUutmScUyFLPN7KK0PVbKnrQdXTPtZx2CcAKMDt0T2EIkKOBqdOy3H72bmpO+Gb/\ne1BKpnzdAgMBAAECggEAGYTNo+h9Kj3Si0SKvMQOpwuFBiwL21lepR3icGhyeXzY\neSluyu+GpqtkjipKc03IK6BLAH+dnZ3Xkwgp8OrYUrBQATAVG39onzuRQysQpyzx\nJjPKQ02BWBQgw94/rnvQPJuhPP93bJ5IQqOotOqwZj0jhX5qFNHBqhH0+bXWzPjg\n2UiY8uAUEi06Sfsux6ZUfonoT9X6DigCTieecy0O4IrlwsJqNZnKMw2GDsTTM2b3\nPkwcprrMK/Ta2rF8nwrmJt9NA+gcSQDy7wer24rJ5Ow6jyNikjbZSfB6lZ/E6AFk\n1x+e8bOp8+khcjx/YT/djKj8LOOj/y20dwjgZDfRMQKBgQD+hsnH6ahkRhW4tuG6\nrr7d3bN8/7RTJFAup0UK9b4Jx9T0Uhu+YGkIuKahZz12OokXguVwH7xGlk9HIR+8\nRT6WM+oI90lo3umTjTjV+Z5Ms7BNhyu39KiwUP0ALXckLeVEQm9kBYb9Q83PuOGD\nc9OXEZEu3KvZklrnYSsURRj68QKBgQDTzipdwB6R89gdcv7h6wTFXetoKZoQ1iiZ\nrO7syqhCfpiqC5rmVDX/5i20Eac+DiAsuIXqrGTgYeDhGjVC7jW+pdoF72HJRIn3\nSfFCc3cpAk/Puk304LgBEEcKWAELvudwB9A4sdauSpTQ/La4hjnAei0fUUQcvvpc\nsUO0ogNorQKBgC3b2z9Jui1W81L0oHciRQF0kIJVEAhq4oeFW8s9u5/HgXcD1DvY\n4xPPMTajg09p/Ilf7DbngOS28FHAhhdF4qDteZ1j8LYUc8FCEJt8/iiTt5BAaoAa\ndMpPzUXa6zx5iHVkAu3ikQ/Qx6RFi1xD4ju1zpLC77Ojyv0lZL2iNX4BAoGBAJ+s\nJqgyc1lYWK4qyReLUzdvDE6kPi8/I7BmfGAqjxpB0dkvkoDdLzBRWFcNj+TqRTsx\niFNXz1yQrTVFyq1AY2fsJCahRjiy4Md6CNUtssFJqt1Q+AAJgO3cVZHosjEmo9cD\nLOfwuYT/WJ0MRrtpBRSjhmy7mPuKxbcnM4FzOdqpAoGBANfRKZ1K8bRJwmSG3gs2\n/67TFd2Bg7A9Dk6iHeRFtOoBGzMwCHVrAFj7GzG4w3qDb7I5sQjkHGFZG00wZUry\nUA/jT+9YTQqIm2CNCiVPxdoslF0SmytUj76hRlit6XuxrK+DKfFpb93Aegfx+kT3\nQSCVO+VYUYKIZp5LxDXxt1LX\n-----END PRIVATE KEY-----\n",
+  "client_email": "buddie@velvety-decoder-378413.iam.gserviceaccount.com",
+  "client_id": "116948399181682964137",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/buddie%40velvety-decoder-378413.iam.gserviceaccount.com"
+}
