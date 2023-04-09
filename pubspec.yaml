@@ -40,7 +40,7 @@ dependencies:
   google_maps_flutter: ^2.2.5
   camera: ^0.10.3
   path_provider: ^2.0.13
-  firebase_auth: ^4.2.10
+  firebase_auth: ^4.4.0
   location: ^4.4.0
   path: ^1.8.2
   geolocator: ^9.0.2
@@ -49,18 +49,24 @@ dependencies:
   google_maps_webservice: ^0.0.19
   get: ^4.6.5
   awesome_snackbar_content: ^0.1.2
-  firebase_core: ^2.7.1
-  firebase_storage: ^11.0.15
-  cloud_firestore: ^4.4.4
-  shared_preferences: ^2.0.18
+  firebase_core: ^2.9.0
+  firebase_storage: ^11.1.0
+  cloud_firestore: ^4.5.0
+  shared_preferences: ^2.1.0
   google_fonts: ^4.0.0
   geocoding: ^2.1.0
   image_picker: ^0.8.7
   dropdown_formfield: ^0.1.4
-  google_sign_in: '^5.1.0'
   bubble: ^1.2.1
   http: ^0.13.1
   custom_marker: ^1.0.0
+  velocity_x: ^3.6.0
+  chat_gpt_sdk: ^2.0.7
+  flutter_dotenv: ^5.0.2
+  google_sign_in: ^6.0.2
+  firebase_database: ^10.1.0
+  firebase_messaging: ^14.4.0
+  geodesy: ^0.3.2
 dev_dependencies:
   flutter_lints: ^2.0.1
   flutter_test:

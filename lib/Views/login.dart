@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../Constant/squaretile.dart';
 import '../Handler/search.dart';
+import '../services/googleauth_services.dart';
 import '../views/profile.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -31,13 +35,23 @@ class _LoginState extends State<Login> {
       Get.snackbar('Error', 'Please enter both email and password');
       return;
     }
-
     try {
       await _auth.signInWithEmailAndPassword(
         email: emailController.text,
         password: passwordController.text.toString(),
       );
+      Position? position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      double latitude = position.latitude;
+      double longitude = position.longitude;
+      // Store the location data in Firebase
+      DatabaseReference databaseReference =
+          FirebaseDatabase.instance.ref().child("users");
 
+      databaseReference.child(FirebaseAuth.instance.currentUser!.uid).set({
+        'latitude': latitude,
+        'longitude': longitude,
+      });
       if (FirebaseAuth.instance.currentUser != null) {
         // Navigate to the home page after successful login
         Get.offAll(() => const Search());
@@ -71,106 +85,105 @@ class _LoginState extends State<Login> {
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
       endDrawer: Drawer(
-  child: Container(
-    color: Colors.green,
-    child: Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: const TextField(
-            decoration: InputDecoration(
-              hintText: 'Search...',
-              hintStyle: TextStyle(color: Colors.white),
-              border: InputBorder.none,
-            ),
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-        Expanded(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              const DrawerHeader(
-                decoration: BoxDecoration(color: Colors.green),
-                child: UserAccountsDrawerHeader(
-                  accountName: ListTile(
-                    leading: Icon(Icons.phone, color: Colors.white),
-                    title: Text(
-                      "+1(773)732-3001",
-                      style: TextStyle(color: Colors.white),
+        child: Container(
+          color: Colors.green,
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: const TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Search...',
+                    hintStyle: TextStyle(color: Colors.white),
+                    border: InputBorder.none,
+                  ),
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              Expanded(
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  children: <Widget>[
+                    const DrawerHeader(
+                      decoration: BoxDecoration(color: Colors.green),
+                      child: UserAccountsDrawerHeader(
+                        accountName: ListTile(
+                          leading: Icon(Icons.phone, color: Colors.white),
+                          title: Text(
+                            "+1(773)732-3001",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        accountEmail: ListTile(
+                          leading: Icon(Icons.email, color: Colors.white),
+                          title: Text(
+                            "support@buddie-up.com",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                        decoration: BoxDecoration(color: Colors.green),
+                      ),
                     ),
-                  ),
-                  accountEmail: ListTile(
-                    leading: Icon(Icons.email, color: Colors.white),
-                    title: Text(
-                      "support@buddie-up.com",
-                      style: TextStyle(color: Colors.white),
+                    ListTile(
+                      title: const Text(
+                        'Profile',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      onTap: () {},
                     ),
-                  ),
-                  decoration: BoxDecoration(color: Colors.green),
+                    ListTile(
+                      title: const Text(
+                        'History',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    ListTile(
+                      title: const Text(
+                        'About',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    ListTile(
+                      title: const Text(
+                        'Contact',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    ListTile(
+                      title: const Text(
+                        'Terms & Conditions',
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ],
                 ),
-              ),
-              ListTile(
-                title: const Text(
-                  'Profile',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                onTap: () {},
-              ),
-              ListTile(
-                title: const Text(
-                  'History',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: const Text(
-                  'About',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: const Text(
-                  'Contact',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                title: const Text(
-                  'Terms & Conditions',
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                ),
-                onTap: () {
-                  Navigator.pop(context);
-                },
               ),
             ],
           ),
         ),
-      ],
-    ),
-  ),
-),
-
+      ),
       appBar: AppBar(
         backgroundColor: CupertinoColors.white,
         leading: Image(
@@ -258,12 +271,12 @@ class _LoginState extends State<Login> {
             ),
           ),
           Container(
-            height: 20,
+            height: 10,
           ),
           Row(
             children: [
               const SizedBox(
-                width: 40,
+                width: 30,
               ),
               CupertinoButton(
                 color: Colors.green,
@@ -279,13 +292,13 @@ class _LoginState extends State<Login> {
               ),
             ],
           ),
-          Container(height: 42),
+          Container(height: 10),
           SingleChildScrollView(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: const [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 18),
+                  padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Text(
                     "Forget Password?\n",
                     style: TextStyle(
@@ -323,19 +336,14 @@ class _LoginState extends State<Login> {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 12),
-                child: FloatingActionButton(
-                  backgroundColor: Colors.green,
-                  child: Image.asset(
-                    'images/message.png',
-                    height: 30, // adjust the height as needed
-                    color: Colors.white,
-                  ),
-                  onPressed: () {},
-                ),
+              SquareTile(
+                  onTap: () => AuthService().signInWithGoogle(),
+                  imagePath: 'images/google-logo.png'),
+              SquareTile(
+                imagePath: 'images/Apple-logo.png',
+                onTap: () {},
               ),
             ],
           ),
@@ -347,7 +355,7 @@ class _LoginState extends State<Login> {
                 children: const [
                   Expanded(
                     child: SizedBox(
-                      height: 30,
+                      height: 20,
                       child: Center(
                         child: Text(
                           '@Copyright 2023 | BUDDIE-UP All Rights Reserved',
