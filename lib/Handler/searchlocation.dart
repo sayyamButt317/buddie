@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:ui' as ui;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:buddie/Views/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,7 +13,6 @@ import 'package:google_api_headers/google_api_headers.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_webservice/places.dart';
-import 'package:http/http.dart' as http;
 import 'package:awesome_snackbar_content/awesome_snackbar_content.dart';
 
 import 'chatmessage.dart';
@@ -32,8 +30,6 @@ final homeScaffoldKey = GlobalKey<ScaffoldState>();
 
 class _SearchPlacesScreenState extends State<SearchPlacesScreen> {
   // Initialize the database reference
-  final DatabaseReference _databaseReference =
-      FirebaseDatabase.instance.ref().child('users');
 
   late GoogleMapController googleMapController;
   TextEditingController destinationController = TextEditingController();
@@ -201,7 +197,7 @@ class _SearchPlacesScreenState extends State<SearchPlacesScreen> {
       return true;
     }).catchError((error) {
       // Chat box failed to launch
-      print(error);
+      debugPrint(error);
       return false;
     });
   }

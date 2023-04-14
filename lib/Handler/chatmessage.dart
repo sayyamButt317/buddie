@@ -20,7 +20,6 @@ class _ChatScreenState extends State<ChatScreen> {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   List<ChatMessage> _chatMessages = [];
-
   void _sendMessage() {
     if (_messageController.text.isNotEmpty) {
       ChatMessage message = ChatMessage(
@@ -35,7 +34,7 @@ class _ChatScreenState extends State<ChatScreen> {
           _messageController.clear();
         });
       }).catchError((error) {
-        print(error);
+        debugPrint(error.toString());
       });
     }
   }
@@ -43,16 +42,17 @@ class _ChatScreenState extends State<ChatScreen> {
   void _getMessages() {
     _db
         .collection('messages')
-        .where('sender', whereIn: [widget.currentUserId, widget.otherUserId])
+        .where('sender', isEqualTo: widget.currentUserId)
+        .where('receiver', isEqualTo: widget.otherUserId)
         .orderBy('timestamp', descending: true)
         .snapshots()
         .listen((snapshot) {
-          setState(() {
-            _chatMessages = snapshot.docs
-                .map<ChatMessage>((doc) => ChatMessage.fromMap(doc.data()))
-                .toList();
-          });
-        });
+      setState(() {
+        _chatMessages = snapshot.docs
+            .map<ChatMessage>((doc) => ChatMessage.fromMap(doc.data()))
+            .toList();
+      });
+    });
   }
 
   @override
